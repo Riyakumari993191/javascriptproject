@@ -45,12 +45,12 @@
     <div id="tem">
     <div class="cls">
         <label> Celsius</label></br>
-        <input type="number"value="0"id=cel>
+        <input type="number" value="0" id="cel">
 
     </div>
     <div class="cls">
         <label>Fahrenheit</label></br>
-        <input type="number" value="30" id="fer">
+        <input type="number" value="32" id="fer">
     </div>
     </div>
     <script>
@@ -58,15 +58,27 @@
          var fer = document.getElementById("fer");
          cel.addEventListener('input',function(){
             let c=this.value;
-            let f= (C * 9/5) + 32 ;
-            fer.value=f;
+            let f= (c * 9/5) + 32 ;
 
+            if(`${f}`.includes(".")){
+                fer.value=f.toFixed(4);
+            }else{
+                fer.value=f;
+            }
          });
          
-         fer.addEventListener('input',function(){
+
+         fer.addEventListener('change',function(){
             let f= this.value;
-            let c=(F - 32) * 5/9 ;
-            cel.value=c;
+            let c=(f - 32) * 5/9 ;
+
+            if(`${c}`.includes(".")){
+                cel.value = c.toFixed(4);
+            }else{
+                cel.value= c;
+
+            }
+
          });
 
         </script>
